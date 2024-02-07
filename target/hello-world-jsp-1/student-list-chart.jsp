@@ -9,6 +9,8 @@
 
 <body>
     <div>
+        <input type="hidden" id="studentNames" value='<%=request.getAttribute("STUDENT_NAMES")%>'>
+        <input type="hidden" id="studentGrades" value='<%=request.getAttribute("STUDENT_GRADES")%>' />
         <canvas id="myChart"></canvas>
     </div>
 
@@ -16,14 +18,16 @@
 
     <script>
         const ctx = document.getElementById('myChart');
+        var studentNames = document.getElementById('studentNames').value;
+        var studentGrades = document.getElementById('studentGrades').value;
 
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: eval(studentNames),
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'Notas / 10',
+                    data: eval(studentGrades),
                     borderWidth: 1
                 }]
             },
